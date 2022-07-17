@@ -18,20 +18,41 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
         vector<int> v;
-        for (int i=0, n = nums.size() ; i<n-1; i++)
-        {
-            for (int j = i+1; j < n; j++)
-            {
-                if(nums[i]+nums[j] == target)
-                {
+//         for (int i=0, n = nums.size() ; i<n-1; i++)
+//         {
+//             for (int j = i+1; j < n; j++)
+//             {
+//                 if(nums[i]+nums[j] == target)
+//                 {
                     
-                    v.push_back(i);
-                    v.push_back(j);
-                    return v;
-                }
+//                     v.push_back(i);
+//                     v.push_back(j);
+//                     return v;
+//                 }
+//             }
+//         }
+//          return v;
+        
+        unordered_map<int, int> map; 
+        for (int i = 0 , n = nums.size(); i < n; i++)
+        {
+            int find_num = target - nums[i];
+            
+            auto itr = map.find(find_num);
+            
+           
+            
+            if(itr == map.end())
+            {
+                map[nums[i]] = i;
+                continue;
             }
+             v.push_back(map[find_num]);
+            v.push_back(i);
+           
+            return v;
         }
-         return v;
+        return v;
     }
 };
 
