@@ -12,7 +12,30 @@ using namespace std;
 #define mod 1000000007
 
 // pasete class solution 
+// 99% faster : moral jab tak need na ho array hi use karo
 class Solution {
+public:
+    int firstUniqChar(string s) 
+    {   int n = s.size();
+        int v[26] = {0};
+        for(auto &i : s)
+        {
+            v[i-'a']++;
+        }
+        for(int i =0; i < n; i++)
+        {
+            if (v[s[i]-'a'] == 1) return i;
+        }
+        
+        return -1;
+        
+        
+    }
+};
+
+
+// m0
+class Solution3 {
 public:
     int firstUniqChar(string s) 
     {   
@@ -24,6 +47,27 @@ public:
         for(int i =0 , n = s.size(); i < n; i++)
         {
             if (map[s[i]] == 1) return i;
+        }
+        
+        return -1;
+        
+        
+    }
+};
+
+// half time faster
+class Solution2 {
+public:
+    int firstUniqChar(string s) 
+    {   int n = s.size();
+        vector<int> v(26,0);
+        for(auto i : s)
+        {
+            v[i-'a']++;
+        }
+        for(int i =0 , n = s.size(); i < n; i++)
+        {
+            if (v[s[i]-'a'] == 1) return i;
         }
         
         return -1;
