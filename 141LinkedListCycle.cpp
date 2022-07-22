@@ -19,8 +19,24 @@ struct ListNode {
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
+// floyed warsel cycle detection algo
+// tortoise method
 
 class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode *slow=head, *fast=head;
+        
+        while(fast && fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast) return true;
+        }
+        return false;
+    }
+};
+
+class Solution2 {
 public:
     bool hasCycle(ListNode *head) 
     {   
