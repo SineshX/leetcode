@@ -13,7 +13,7 @@ using namespace std;
 #define ll long long
 #define mod 1000000007
 
-// pasete class solution 
+// pasete class solution imroved 
 class MyQueue {
 public:
     stack<int> st;
@@ -21,44 +21,39 @@ public:
     MyQueue() {
     }
     
-    void push(int x) {
+    void push(int x) 
+    {
+        if(!st.empty())
+        {
+            while(!st.empty())
+            {
+                ct.push(st.top());
+                st.pop();
+            }
+            
+        }
+          
+        st.push(x); 
         
-        st.push(x);
+        while(!ct.empty())
+        {
+            st.push(ct.top());
+            ct.pop();
+        }
+        
         
     }
     
     int pop() {
-        // remove from front
-        while(!st.empty())
-        {   
-            ct.push(st.top());
-            st.pop();
-        }
-        int c = ct.top();
-        ct.pop();
-        while(!ct.empty())
-        {
-            st.push(ct.top());
-            ct.pop();
-        }
         
+        int c = st.top();
+        st.pop();
         return c;
     }
     
     int peek() {
-        while(!st.empty())
-        {   
-            ct.push(st.top());
-            st.pop();
-        }
-        int c = ct.top();
-        while(!ct.empty())
-        {
-            st.push(ct.top());
-            ct.pop();
-        }
-        
-        return c;
+       
+        return st.top();
         
     }
     
@@ -75,7 +70,6 @@ public:
  * int param_3 = obj->peek();
  * bool param_4 = obj->empty();
  */
-
 void solve()
 {
     // take inputs if needed 
