@@ -23,63 +23,80 @@ using namespace std;
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  };
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
+    void preorder(TreeNode *root, vector<int> &ans)
+    {
+        if(root == nullptr) return;
+        ans.push_back(root->val);
+        preorder(root->left, ans);
+        preorder(root->right, ans);
+    }
     vector<int> preorderTraversal(TreeNode* root) 
     {
         vector<int> ans;
-        stack<TreeNode*> rstack,lstack;
+        preorder(root, ans);
+//         stack<TreeNode*> rstack,lstack;
         
-        if ( root == nullptr) return ans;
+//         if ( root == nullptr) return ans;
         
-        TreeNode *l,*r;
-        if(root->left != NULL) 
-        {
-            lstack.push(root->left);
-        }
-        // l = root->left;
+//         TreeNode *ptr;
+//         if(root->left != NULL) 
+//         {
+//             lstack.push(root->left);
+//         }
+//         // l = root->left;
         
-        if (root->right != NULL)
-            rstack.push(root->right);
-        
-        
-        ans.push_back(root->val);
+//         if (root->right != NULL)
+//             rstack.push(root->right);
         
         
-        while( !(rstack.empty() && lstack.empty()) )
-        {
+//         ans.push_back(root->val);
+        
+        
+//         while( !(rstack.empty() && lstack.empty()) )
+//         {
            
-            if(!lstack.empty()) 
-            {   
-                l  = lstack.top();
-                lstack.pop();
-                ans.push_back(l->val);
+//             if(!lstack.empty()) 
+//             {   
+//                 ptr  = lstack.top();
+//                 lstack.pop();
+//                 ans.push_back(ptr->val);
                 
-                if (l->right != NULL)
-                    rstack.push(l->right);
-                if (l->left != NULL)
-                    lstack.push(l->left);
-                continue;
-            }
+//                 if (ptr->right != NULL)
+//                     rstack.push(ptr->right);
+//                 if (ptr->left != NULL)
+//                     lstack.push(ptr->left);
+//                 continue;
+//             }
           
-            //explore right
-            if(!rstack.empty() )
-            {
-                r  = rstack.top();
-                rstack.pop();
-                ans.push_back(r->val);
+//             //explore right
+//             if(!rstack.empty() )
+//             {
+//                 ptr  = rstack.top();
+//                 rstack.pop();
+//                 ans.push_back(ptr->val);
                 
-                if (r->right != NULL)
-                    rstack.push(r->right);
+//                 if (ptr->right != NULL)
+//                     rstack.push(ptr->right);
                 
-                if (r->left != NULL)
-                    lstack.push(r->left);
-                continue;
-            }
+//                 if (ptr->left != NULL)
+//                     lstack.push(ptr->left);
+//             }
           
-        }
-        
-        
+//         }
+
         return ans;
     }
 };
