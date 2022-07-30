@@ -28,9 +28,35 @@ struct TreeNode {
 
 class Solution {
 public:
+
+    bool leftright(TreeNode *leftchild, TreeNode* rightchild)
+    {
+        if(leftchild == nullptr && rightchild == nullptr) return true;
+        
+        if( leftchild == nullptr || rightchild == nullptr ) return false;
+
+        // bith value are nonNUll
+
+        if( leftchild->val != rightchild->val ) return false;
+
+        return leftright(leftchild->left , rightchild->right) 
+                && leftright(leftchild->right, rightchild->left) ;
+    }
+    bool isSymmetric(TreeNode* root) 
+    {
+        if(root == nullptr ) return true;
+
+        return leftright(root->left, root->right);
+    }
+
+
+
+
+
+
     
     //one way : my naive solution; 
-    bool isSymmetric(TreeNode* root) 
+    bool isSymmetric2(TreeNode* root) 
     {
         if(root == nullptr ) return true;
 
