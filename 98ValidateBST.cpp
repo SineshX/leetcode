@@ -29,6 +29,37 @@ long long pre = LONG_MIN;
     bool flag = true;
     void valid(TreeNode *root)
     {
+       
+        
+    }
+    bool isValidBST(TreeNode* root) 
+    {
+        valid(root);
+
+
+        if(root==nullptr) return;
+
+        valid(root->left);
+        //print root
+        if(root->val > pre)
+        {
+            pre = root->val;
+        }else{
+            flag = false;
+            return;
+        }
+        valid(root->right);
+        return flag;
+    }
+};
+
+
+class Solution2 {
+public:
+    long long pre = LONG_MIN;
+    bool flag = true;
+    void valid(TreeNode *root)
+    {
         if(root==nullptr) return;
 
         valid(root->left);
