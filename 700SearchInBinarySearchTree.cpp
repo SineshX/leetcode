@@ -28,8 +28,38 @@ struct TreeNode {
 
 class Solution {
 public:
-    // slo 1
+
+    // super
     TreeNode* searchBST(TreeNode* root, int val) 
+    {
+        if(root == nullptr) return NULL;
+        while(root != nullptr && root->val != val)
+            root = root->val > val?root->left:root->right;
+
+        return root;
+    }
+    // improved
+    TreeNode* searchBST1(TreeNode* root, int val) 
+    {
+        if(root == nullptr) return NULL;
+        while(root)
+        {
+            if(root->val == val) return root;
+            else if(root->val < val) 
+            {
+                root = root->right;
+            }
+            else{
+                root = root->left;
+            }
+        }
+
+        return nullptr;
+    }
+
+
+    //1
+    TreeNode* searchBST2(TreeNode* root, int val) 
     {
         if(root == nullptr) return NULL;
         if(root->val == val ) return root;
