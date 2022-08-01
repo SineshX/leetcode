@@ -35,3 +35,12 @@ int main() {
     while(test--) solve();
     return 0;
 }
+
+/*  Git shortcuts
+ git rm input.txt to remove or untrack a file
+ git add .
+ git status
+ git commit -m "Hello"
+ git push
+ or git push origin master
+*/
