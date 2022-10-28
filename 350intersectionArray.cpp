@@ -42,6 +42,32 @@ public:
         return result;
     }
 };
+// improved 
+class Solution2 {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) 
+    {
+        unordered_map<int, int> map1;
+        vector<int> result;
+        
+        for (auto &i : nums1) map1[i]++;
+        
+        for (auto &i : nums2) 
+        {
+            if(map1.find(i) != map1.end() && map1[i])
+            {// means found
+                result.push_back(i);
+                map1[i]--;
+            }
+
+            // else continue
+            
+        }
+        
+        
+        return result;
+    }
+};
 
 void solve()
 {
