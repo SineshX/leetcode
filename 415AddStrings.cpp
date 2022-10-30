@@ -43,6 +43,9 @@ public:
         return  ans;
     }
 };
+//also 
+// use stoi(a)
+// to_string(b)
 
 void solve()
 {
