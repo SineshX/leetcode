@@ -8,14 +8,36 @@
 #include<unordered_set>
 #include<queue>
 #include<stack>
+#include<string>
+
 
 using namespace std;
 
 #define ll long long
 #define mod 1000000007
 
-// pasete class solution 
-
+// paste class solution 
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) 
+    {
+            // m1 map se kr lo jiska key val max hua ;
+        unordered_map<int,int> mp;
+        for(auto&i:nums)mp[i]++;
+        priority_queue<pair<int,int>> pq;
+        for(auto &i:mp)
+        {
+            pq.push({i.second, i.first});
+        }
+        vector<int> res;
+        while(k--)
+        {
+            res.push_back(pq.top().second);
+            pq.pop();
+        }
+        return res;
+    }
+};
 
 void solve()
 {
@@ -33,28 +55,5 @@ int main() {
     ll test=1;
 //cin>>test;
     while(test--) solve();
-
-
-
-
-    // set<int> su(ans.begin(), ans.end());
-
-    // is_sorted(ans.begin(),ans.end()
     return 0;
 }
-
-/*  Git shortcuts
- git rm input.txt to remove or untrack a file
- git add .
- git status
- git commit -m "Hello"
- git push
- or git push origin master
-*/
-/* 
-subarray/substring is contigous {{1,2,3}. {3,4,5}, {1}, {2}} 
-n*(n+1)/2 non-empty subarrays/substrings
-
-but sub set can be discontigous {1, 3, 5}
-2^(n)-1 ; 
- */
