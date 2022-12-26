@@ -6,6 +6,23 @@ using namespace std;
 #define mod 1000000007
 
 // paste class solution 
+// better solution for two sum problem when array is sorted ;
+class Solution2 {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {   
+        int start = 0,end = nums.size()-1;
+        while(start<end)
+        {
+            int total = nums[start] + nums[end];
+            if (total == target ) return {start+1, end+1};
+            
+            if(total < target) start++;
+            else end--;
+        }  
+        return {start+1, end+1};     
+    }
+};
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
