@@ -13,6 +13,29 @@ using namespace std;
 
 // pasete class solution 
 // https://leetcode.com/problems/two-sum/submissions/
+class Solution2 {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        unordered_map<int, int> mp;
+        for(int i=0,n=nums.size(); i < n; i++)
+        {
+            if(mp.find(nums[i]) == mp.end()) 
+            {
+                // not found 
+                // add target-nums[i]
+                mp[target-nums[i]] = i;
+                // stored index as well 
+            }else{
+                vector<int> v;
+                v.push_back(mp[nums[i]]);
+                v.push_back(i);
+                return v;
+            }
+        }
+        return {};
+    }
+};
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
