@@ -18,14 +18,33 @@ public:
     void merge(vector<int>& num1, int m, vector<int>& num2, int n) 
     {	
       	//m + n and n 
-        if(num2.empty()) return;
-        
-        for(int i = m, j = 0; i < m+n ; i++, j++)
+        // if(num2.empty()) return;
+        // for(int i = m, j = 0; i < m+n ; i++, j++) num1[i] = num2[j];
+        // sort(num1.begin(), num1.end());
+
+        // last element index of num1
+        int i = m-1;
+        int j = n-1;
+        // num 1 ka last element 
+        int k = m+n -1;
+        while(i >=0 and j>=0)
         {
-            num1[i] = num2[j];
+            if(num1[i] > num2[j])
+            {
+                num1[k] = num1[i];
+                k--;
+                i--;
+            }else{
+                num1[k] = num2[j];
+                k--;
+                j--;
+            }
         }
-        // sort inside num1 vector
-        sort(num1.begin(), num1.end());
+        while(j>=0)
+        {
+            num1[k--] = num2[j--];
+        }
+
         
         
     }
