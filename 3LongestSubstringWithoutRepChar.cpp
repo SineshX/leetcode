@@ -6,6 +6,8 @@ using namespace std;
 #define mod 1000000007
 
 // paste class solution 
+// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+// 3. Longest Substring Without Repeating Characters
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) 
