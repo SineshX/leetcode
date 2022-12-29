@@ -1,3 +1,5 @@
+# find shortest path of each node such that it starts and ends at the same node.
+
 def floyd_warshall(graph):
   # Initialize the distance matrix
   num_nodes = len(graph)
