@@ -1,4 +1,4 @@
 # leetcode
-## DS 14 days course 
-[ ] Day1
+## DSA : 365  
+[.] Day 1 
 
