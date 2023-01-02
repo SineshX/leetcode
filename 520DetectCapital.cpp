@@ -14,6 +14,23 @@ public:
     {   
         // A-Z == [65-90]
         // a-z == [97- 122]
+        int count  = 0;
+        for (auto c : word) 
+            if (isupper(c)) count++;
+        // lowercase or Capital Case
+        if (count == 0 or count == size(word)) return true;
+        // Title
+        else if( count  == 1 and  isupper(word[0])) return true;
+     
+        return false;
+    }
+};
+class Solution0 {
+public:
+    bool detectCapitalUse(string word) 
+    {   
+        // A-Z == [65-90]
+        // a-z == [97- 122]
         int n = word.size();
         if (n == 1) return true;
         // check 1st letter is capital
